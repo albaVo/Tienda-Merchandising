@@ -8,8 +8,8 @@ export class Cliente {
   @Column('text', { unique: true })
   nombre: string;
 
-  @Column('text', { unique: true })
-  telefono: string;
+  @Column('int', { unique: true })
+  telefono: number;
 
   @Column('text', { unique: true })
   direccion: string;
