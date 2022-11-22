@@ -1,13 +1,13 @@
-import { IsNumber, IsString, MinLength } from 'class-validator';
+import { IsString, MinLength } from 'class-validator';
 
 export class CreateClienteDto {
   @IsString()
   @MinLength(1)
   nombre: string;
 
-  @IsNumber()
+  @IsString()
   @MinLength(8)
-  telefono: number;
+  telefono: string;
 
   @IsString()
   @MinLength(5)
