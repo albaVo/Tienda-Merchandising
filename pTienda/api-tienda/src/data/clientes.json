@@ -10,6 +10,11 @@
         "direccion": "Carretera del Muelle 56, Castellón"
     },
     {
+        "nombre": "Rodrigo Puente Carrillo",
+        "telefono": "674895320",
+        "direccion": "Plaza Colón 56, Lleida"
+    },
+    {
         "nombre": "Manuel Fernandez Gómez",
         "telefono": "640927319",
         "direccion": "Cañada del Rosal 26, Huelva"
@@ -43,10 +48,5 @@
         "nombre": "Jacinto Valle Blanco",
         "telefono": "670261113", 
         "direccion": "Libertad 12, Avila"
-    },
-    {
-        "nombre": "Rodrigo Puente Carrillo",
-        "telefono": "674895320",
-        "direccion": "Plaza Colón 56, Lleida"
     }
 ]
