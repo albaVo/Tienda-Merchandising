@@ -12,4 +12,7 @@ export class CreateClienteDto {
   @IsString()
   @MinLength(5)
   direccion: string;
+
+  @IsString()
+  idUsuario: string;
 }

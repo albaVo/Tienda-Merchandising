@@ -7,6 +7,7 @@ import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
+  UsuariosService: any;
   constructor(
     @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>,
@@ -14,10 +15,15 @@ export class ClientesService {
 
   async create(createClienteDto: CreateClienteDto) {
     try {
-      const cliente = this.clienteRepository.create(createClienteDto);
+      const { idUsuario, ...campos } = createClienteDto;
+      console.log({...campos});
+      const usuario = this.UsuariosService.findOne(idUsuario);
+      const cliente = this.clienteRepository.create({...campos});
+      cliente.usuario = await this.UsuariosService.findOne(idUsuario);
       await this.clienteRepository.save(cliente);
       return cliente;
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       throw new InternalServerErrorException('Ayuda!');
     }

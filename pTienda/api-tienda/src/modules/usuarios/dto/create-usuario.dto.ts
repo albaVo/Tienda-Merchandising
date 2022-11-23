@@ -12,4 +12,7 @@ export class CreateUsuarioDto {
   @IsString()
   @MinLength(1)
   redes_sociales: string;
+
+  @IsString()
+  idCliente: number;
 }
