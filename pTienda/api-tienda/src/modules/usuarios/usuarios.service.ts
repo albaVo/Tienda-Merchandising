@@ -27,8 +27,10 @@ export class UsuariosService {
     return this.usuarioRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+  findOne(codigo: string) {
+    return this.usuarioRepository.find({
+      where: {codigo: codigo}
+    })
   }
 
   update(id: number, updateUsuarioDto: UpdateUsuarioDto) {

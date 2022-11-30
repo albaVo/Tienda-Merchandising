@@ -1,9 +1,17 @@
-import { IsString, MinLength } from 'class-validator';
+import { IsNumber, IsString, MinLength } from 'class-validator';
 
 export class CreateClienteDto {
   @IsString()
+  @MinLength(9)
+  NIF: string;
+  
+  @IsString()
   @MinLength(1)
   nombre: string;
+
+  @IsString()
+  @MinLength(1)
+  apellidos: string;
 
   @IsString()
   @MinLength(8)
@@ -14,5 +22,10 @@ export class CreateClienteDto {
   direccion: string;
 
   @IsString()
-  idUsuario: string;
+  @MinLength(1)
+  ciudad: string;
+
+  @IsString()
+  @MinLength(1)
+  codigoUsuario: string;
 }

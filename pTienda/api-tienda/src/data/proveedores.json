@@ -1,0 +1,42 @@
+[
+    {
+        "codigo": "001",
+        "nombre": "Proveedor Marvel",
+        "telefono": "962200502",
+        "direccion": "Carrer dels Artesans 1, Valencia",
+        "email": "marvel@gmail.com",
+        "website": "http://marvel.com"
+    },
+    {
+        "codigo": "002",
+        "nombre": "Proveedor Harry Potter",
+        "telefono": "916102293",
+        "direccion": "Isaac Peral 14, Madrid",
+        "email": "harrypotter@gmail.com",
+        "website": "http://harry_potter.com"
+    },
+    {
+        "codigo": "003",
+        "nombre": "Proveedor Dragon Ball",
+        "telefono": "954368866",
+        "direccion": "Destornillador Nave 2, Sevilla",
+        "email": "dragonball@gmail.com",
+        "website": "http://dragon_ball.com"
+    },
+    {
+        "codigo": "004",
+        "nombre": "Proveedor Netflix",
+        "telefono": "950420369",
+        "direccion": "Calle Mayor, Madrid",
+        "email": "netflix@gmail.com",
+        "website": "http://netflix.com"
+    },
+    {
+        "codigo": "005",
+        "nombre": "Proveedor Disney",
+        "telefono": "958302658",
+        "direccion": "Ctra. de Aspe 6, Alicante",
+        "email": "disney@gmail.com",
+        "website": "http://disney.com"
+    }
+]

@@ -1,19 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateProveedoreDto } from './dto/create-proveedore.dto';
 import { UpdateProveedoreDto } from './dto/update-proveedore.dto';
+import { Proveedore } from './entities/proveedore.entity';
 
 @Injectable()
 export class ProveedoresService {
-  create(createProveedoreDto: CreateProveedoreDto) {
-    return 'This action adds a new proveedore';
+
+  constructor(
+    @InjectRepository(Proveedore)
+    private readonly proveedorRepository: Repository<Proveedore>
+  ){}
+
+  async create(createProveedoreDto: CreateProveedoreDto) {
+    try {
+      const proveedor = this.proveedorRepository.create(createProveedoreDto);
+      await this.proveedorRepository.save(proveedor);
+      return proveedor;
+    }
+    catch (error) {
+      console.log(error);
+      throw new InternalServerErrorException('Ayuda!')
+    }
   }
 
   findAll() {
-    return `This action returns all proveedores`;
+    return this.proveedorRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} proveedore`;
+  findOne(codigo: string) {
+    return this.proveedorRepository.find({
+      where: {codigo: codigo}
+    })
   }
 
   update(id: number, updateProveedoreDto: UpdateProveedoreDto) {

@@ -1,51 +1,60 @@
 [
     {
-        "nombre": "bemar06",
-        "correo_electronico": "beamarquez@gmail.com",
-        "redes_sociales": "beamendoza"
+        "codigo": "RXPCNNWE",
+        "username": "bemar06",
+        "contraseña": "96570",
+        "email": "beamarquez@gmail.com",
+        "twitter": "twitter: beamendoza",
+        "website": "http://beamendoza.com"
     },
     {
-        "nombre": "rosaort45",
-        "correo_electronico": "rosaortiz@gmail.com",
-        "redes_sociales": "rositaortiz"
+        "codigo": "6LMCNVDJ",
+        "username": "rosaort45",
+        "contraseña": "78003",
+        "email": "rosaortiz@gmail.com",
+        "twitter": "twitter: rositaortiz",
+        "website": "http://rositaortiz.com"
     },
     {
-        "nombre": "rodri15",
+        "username": "rodri15",
+        "contraseña": "36698",
         "correo_electronico": "rodrigopuente@gmail.com",
         "redes_sociales": "rocarri"
     },
     {
-        "nombre": "manufer85",
+        "username": "manufer85",
+        "contraseña": "77410",
         "correo_electronico": "manufernandez@gmail.com",
         "redes_sociales": "manugom"
     },
     {
-        "nombre": "vaneib10",
+        "username": "vaneib10",
+        "contraseña": "63520",
         "correo_electronico": "vanesaibarra@gmail.com",
         "redes_sociales": "vanruiz"
     },
     {
-        "nombre": "judsu89",
+        "username": "judsu89",
         "correo_electronico": "juditsuarez@gmail.com",
         "redes_sociales": "juditrom"
     },
     {
-        "nombre": "hecme75",
+        "username": "hecme75",
         "correo_electronico": "hectormellado@gmail.com",
         "redes_sociales": "hechern"
     },
     {
-        "nombre": "terealc26",
+        "username": "terealc26",
         "correo_electronico": "teresamillan@gmail.com",
         "redes_sociales": "teremillan"
     },
     {
-        "nombre": "sebasmena58",
+        "username": "sebasmena58",
         "correo_electronico": "sebastianmena@gmail.com",
         "redes_sociales": "sespin"
     },
     {
-        "nombre": "jacinvalle",
+        "username": "jacinvalle",
         "correo_electronico": "jacintovalle@gmail.com",
         "redes_sociales": "jacintblan"
     }

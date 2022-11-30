@@ -1,27 +1,28 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { UsuariosService } from '../usuarios/usuarios.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
-  UsuariosService: any;
+
   constructor(
     @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>,
+    private readonly usuarioService: UsuariosService
   ) {}
 
   async create(createClienteDto: CreateClienteDto) {
     try {
-      const { idUsuario, ...campos } = createClienteDto;
-      console.log({...campos});
-      const usuario = this.UsuariosService.findOne(idUsuario);
-      const cliente = this.clienteRepository.create({...campos});
-      cliente.usuario = await this.UsuariosService.findOne(idUsuario);
+      const { codigoUsuario, ...camposCliente } = createClienteDto;
+      const cliente = this.clienteRepository.create({...camposCliente});
+      const usuario = await this.usuarioService.findOne(codigoUsuario);
+      cliente.usuario = usuario[0];
       await this.clienteRepository.save(cliente);
-      return cliente;
+      return cliente
     }
     catch (error) {
       console.log(error);
@@ -30,11 +31,15 @@ export class ClientesService {
   }
 
   findAll() {
-    return this.clienteRepository.find({});
+    return this.clienteRepository.find({
+      relations: ['usuario']
+    });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cliente`;
+    return this.clienteRepository.find({
+      //where: {id: id}
+    })
   }
 
   update(id: number, updateClienteDto: UpdateClienteDto) {
