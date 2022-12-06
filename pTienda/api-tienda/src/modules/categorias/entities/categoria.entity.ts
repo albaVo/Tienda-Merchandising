@@ -1,5 +1,6 @@
+import { Producto } from "src/modules/productos/entities/producto.entity";
 import { Proveedore } from "src/modules/proveedores/entities/proveedore.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Categoria {
@@ -11,8 +12,17 @@ export class Categoria {
 
     @OneToOne(
         () => Proveedore,
-        (proveedor) => proveedor.categoria
+        (proveedore) => proveedore.categoria
     )
     @JoinColumn()
-    proveedore?: Proveedore
+    proveedore?: Proveedore;
+
+    @OneToMany(
+        () => Producto,
+        (Producto) => Producto.categoria,
+        { cascade: false, eager: true }
+    )
+    productos?: Producto[];
+
+
 }

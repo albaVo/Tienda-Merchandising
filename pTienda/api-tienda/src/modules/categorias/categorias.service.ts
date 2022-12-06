@@ -32,21 +32,22 @@ export class CategoriasService {
 
   findAll() {
     return this.categoriaRepository.find({
-      relations: ['proveedor']
+      relations: ['proveedore']
     });
   }
 
   findOne(codigo: string) {
     return this.categoriaRepository.findOne({
-      where: {codigo: codigo}
+      where: {codigo},
+      relations: {proveedore: true}
     })
   }
 
-  update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    return `This action updates a #${id} categoria`;
+  update(codigo: string, updateCategoriaDto: UpdateCategoriaDto) {
+    return `This action update a #${codigo} categoria`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} categoria`;
+  remove(codigo: string) {
+    return `This action removes a #${codigo} categoria`;
   }
 }

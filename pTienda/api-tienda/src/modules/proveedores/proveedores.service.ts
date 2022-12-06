@@ -31,7 +31,7 @@ export class ProveedoresService {
 
   findOne(codigo: string) {
     return this.proveedorRepository.find({
-      where: {codigo: codigo}
+      where: {codigo}
     })
   }
 
