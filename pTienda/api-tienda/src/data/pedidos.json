@@ -2,6 +2,7 @@
     {
         "codigo": "1",
         "fecha_pedido": "2022-12-11",
-        "clienteNIF": "58629324R" 
+        "clienteNIF": "58629324R",
+        "codigoDetallesPedido": "01"
     }
 ]

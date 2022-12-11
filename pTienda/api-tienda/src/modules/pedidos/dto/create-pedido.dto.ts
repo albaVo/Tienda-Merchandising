@@ -10,4 +10,7 @@ export class CreatePedidoDto {
 
     @IsString()
     NIFCliente: string;
+
+    @IsString()
+    codigoDetallesPedido: string;
 }

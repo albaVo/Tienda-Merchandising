@@ -17,9 +17,9 @@ export class DetallesPedidosController {
     return this.detallesPedidosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.detallesPedidosService.findOne(+id);
+  @Get(':codigo')
+  findOne(@Param('codigo') codigo: string) {
+    return this.detallesPedidosService.findOne(codigo);
   }
 
   @Patch(':id')

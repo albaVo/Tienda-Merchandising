@@ -1,5 +1,6 @@
 import { Cliente } from "src/modules/clientes/entities/cliente.entity";
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { DetallesPedido } from "src/modules/detalles_pedidos/entities/detalles_pedido.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Pedido {
@@ -15,4 +16,11 @@ export class Pedido {
         { cascade: false }
     )
     cliente?: Cliente;
+
+    @OneToOne(
+        () => DetallesPedido,
+        (detalles_pedido) => detalles_pedido.pedido
+    )
+    @JoinColumn()
+    detalles_pedido: DetallesPedido;
 }
