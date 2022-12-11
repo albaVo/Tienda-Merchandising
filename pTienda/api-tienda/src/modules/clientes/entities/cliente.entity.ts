@@ -1,5 +1,6 @@
+import { Pedido } from 'src/modules/pedidos/entities/pedido.entity';
 import { Usuario } from 'src/modules/usuarios/entities/usuario.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Cliente {
@@ -24,8 +25,14 @@ export class Cliente {
   @OneToOne(
     () => Usuario,
     (usuario) => usuario.cliente,
-    //{ eager: true, cascade: true }
   )
   @JoinColumn()
   usuario?: Usuario;
+
+  @OneToMany(
+    () => Pedido,
+    (pedido) => pedido.cliente,
+    { cascade: false, eager: true }
+  )
+  pedidos?: Pedido[];
 }

@@ -17,9 +17,9 @@ export class PedidosController {
     return this.pedidosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pedidosService.findOne(+id);
+  @Get(':codigo')
+  findOne(@Param('codigo') codigo: string) {
+    return this.pedidosService.findOne(codigo);
   }
 
   @Patch(':id')

@@ -1,0 +1,13 @@
+[
+    {
+       "codigo": "44533583",
+       "nombre": "Figura Vinilo Venom",
+       "thumbnail": "https://acortar.link/nmunde",
+       "tipo": "Figura",
+       "tallas": ["M"],
+       "precio": "15",
+       "estado": "DISPONIBLE",
+       "stock": 10,
+       "codigoCategoria": "c1"
+    }
+]

@@ -17,9 +17,9 @@ export class ClientesController {
     return this.clientesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientesService.findOne(+id);
+  @Get(':NIF')
+  findOne(@Param('NIF') NIF: string) {
+    return this.clientesService.findOne(NIF);
   }
 
   @Patch(':id')

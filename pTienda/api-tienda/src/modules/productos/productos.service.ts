@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CategoriasService } from '../categorias/categorias.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { Producto } from './entities/producto.entity';
@@ -10,21 +11,33 @@ export class ProductosService {
 
   constructor(
     @InjectRepository(Producto)
-    private readonly categoriaRepository: Repository<Producto>
+    private readonly productoRepository: Repository<Producto>,
+    private readonly categoriaService: CategoriasService
   ){}
 
   async create(createProductoDto: CreateProductoDto) {
-    // try {
-    //   const {}
-    // }
+    try {
+      const { codigoCategoria, ...camposProducto } = createProductoDto;
+      const producto = this.productoRepository.create({...camposProducto});
+      const categoria = await this.categoriaService.findOne(codigoCategoria);
+      producto.categoria = categoria;
+      await this.productoRepository.save(producto);
+      return producto
+    }
+    catch(error){
+      console.log(error);
+      return new InternalServerErrorException('Ayuda!')
+    }
   }
 
   findAll() {
-    return `This action returns all productos`;
+    return this.productoRepository.find({})
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} producto`;
+  findOne(codigo: string) {
+    return this.productoRepository.findOne({
+      where: {codigo}
+    })
   }
 
   update(id: number, updateProductoDto: UpdateProductoDto) {

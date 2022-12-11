@@ -36,9 +36,10 @@ export class ClientesService {
     });
   }
 
-  findOne(id: number) {
+  findOne(NIF: string) {
     return this.clienteRepository.find({
-      //where: {id: id}
+      where: {NIF},
+      relations: {pedidos: true}
     })
   }
 

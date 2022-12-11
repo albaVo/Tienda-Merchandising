@@ -17,9 +17,10 @@ export class CreateProductoDto {
     @MinLength(1)
     tipo: string;
 
-    @IsString()
+    @IsString({ each: true })
     @IsArray()
-    tallas: string[];
+    @IsOptional()
+    tallas?: string[];
 
     @IsNumber()
     @IsPositive()
@@ -31,4 +32,7 @@ export class CreateProductoDto {
     @IsInt()
     @IsPositive()
     stock: number;
+
+    @IsString()
+    codigoCategoria?: string;
 }

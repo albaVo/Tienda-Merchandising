@@ -39,7 +39,8 @@ export class CategoriasService {
   findOne(codigo: string) {
     return this.categoriaRepository.findOne({
       where: {codigo},
-      relations: {proveedore: true}
+      relations: {proveedore: true, productos: true},
+      
     })
   }
 

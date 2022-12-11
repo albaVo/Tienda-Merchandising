@@ -17,9 +17,9 @@ export class ProductosController {
     return this.productosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productosService.findOne(+id);
+  @Get(':codigo')
+  findOne(@Param('codigo') codigo: string) {
+    return this.productosService.findOne(codigo);
   }
 
   @Patch(':id')
