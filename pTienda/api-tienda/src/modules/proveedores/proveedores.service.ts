@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateProveedoreDto } from './dto/create-proveedore.dto';
@@ -7,6 +7,8 @@ import { Proveedore } from './entities/proveedore.entity';
 
 @Injectable()
 export class ProveedoresService {
+
+  private readonly logger = new Logger('ProveedoresService');
 
   constructor(
     @InjectRepository(Proveedore)
@@ -42,4 +44,24 @@ export class ProveedoresService {
   remove(id: number) {
     return `This action removes a #${id} proveedore`;
   }
+
+  async deleteAllProveedores() {
+      const query = this.proveedorRepository.createQueryBuilder('proveedor');
+      try {
+        return await query
+        .delete()
+        .where({})
+        .execute();
+      } catch (error) {
+        this.handleDBErrors(error);
+      }
+    }
+  
+    private handleDBErrors(error: any): never {
+      if (error.code === '23505'){
+        throw new BadRequestException(error.detail);
+      }
+      this.logger.error(error);
+      throw new InternalServerErrorException('Please Check Server Error ...');
+    }
 }

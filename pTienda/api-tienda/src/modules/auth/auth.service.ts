@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -9,7 +9,9 @@ import { ClientesService } from '../clientes/clientes.service';
 
 @Injectable()
 export class AuthService {
+
   
+
   constructor(
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
@@ -59,22 +61,23 @@ export class AuthService {
     return `This action removes a #${id} auth`;
   }
 
-  async deleteAllUsuarios() {
-    const query = this.usuarioRepository.createQueryBuilder('usuario');
-    try {
-      return await query
-      .delete()
-      .where({})
-      .execute();
-    } catch (error) {
-      this.handleDBErrors(error);
-    }
-  }
+  // async deleteAllUsuarios() {
+  //   const query = this.usuarioRepository.createQueryBuilder('usuario');
+  //   try {
+  //     return await query
+  //     .delete()
+  //     .where({})
+  //     .execute();
+  //   } 
+  //   catch (error) {
+  //     this.handleDBErrors(error);
+  //   }
+  // }
 
   private handleDBErrors(error: any): never {
-    if (error.code === '23505') 
+    if (error.code === '23505'){
       throw new BadRequestException(error.detail);
-
+    }
     throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

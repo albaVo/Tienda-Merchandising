@@ -8,6 +8,9 @@ import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
+
+
+  
   constructor(
     @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>,
@@ -43,22 +46,22 @@ export class ClientesService {
     return `This action removes a #${id} cliente`;
   }
 
-  async deleteAllClientes() {
-    const query = this.clienteRepository.createQueryBuilder('cliente');
-    try {
-      return await query
-      .delete()
-      .where({})
-      .execute();
-    } catch (error) {
-      this.handleDBErrors(error);
-    }
-  }
+  // async deleteAllClientes() {
+  //   const query = this.clienteRepository.createQueryBuilder('cliente');
+  //   try {
+  //     return await query
+  //     .delete()
+  //     .where({})
+  //     .execute();
+  //   } catch (error) {
+  //     this.handleDBErrors(error);
+  //   }
+  // }
 
   private handleDBErrors(error: any): never {
-    if (error.code === '23505') 
+    if (error.code === '23505'){
       throw new BadRequestException(error.detail);
-
+    }
     throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }
