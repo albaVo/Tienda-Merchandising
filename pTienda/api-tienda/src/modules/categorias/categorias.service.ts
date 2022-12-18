@@ -80,8 +80,9 @@ export class CategoriasService {
     }
   }
 
-  remove(codigo: string) {
-    return `This action removes a #${codigo} categoria`;
+  async remove(codigo: string) {
+    const categoria = await this.findOne(codigo);
+    await this.categoriaRepository.remove(categoria)
   }
 
   async deleteAllCategorias() {
@@ -91,7 +92,8 @@ export class CategoriasService {
       .delete()
       .where({})
       .execute();
-    } catch (error) {
+    } 
+    catch (error) {
       this.handleDBErrors(error);
     }
   }

@@ -24,7 +24,7 @@ export class Proveedore {
     @OneToOne(
         () => Categoria,
         (categoria) => categoria.proveedore,
-        { cascade: false }
+        { onDelete: 'CASCADE' }
     )
-    categoria?: Categoria
+    categoria: Categoria
 }
