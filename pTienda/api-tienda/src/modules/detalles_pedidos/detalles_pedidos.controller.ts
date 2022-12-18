@@ -32,16 +32,16 @@ export class DetallesPedidosController {
     return this.detallesPedidosService.findOne(codigo);
   }
 
-  @Patch(':id')
+  @Patch(':codigo')
   update(
-    @Param('id') id: string,
+    @Param('codigo') codigo: string,
     @Body() updateDetallesPedidoDto: UpdateDetallesPedidoDto,
   ) {
-    return this.detallesPedidosService.update(+id, updateDetallesPedidoDto);
+    return this.detallesPedidosService.update(codigo, updateDetallesPedidoDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.detallesPedidosService.remove(+id);
+  @Delete(':codigo')
+  remove(@Param('codigo') codigo: string) {
+    return this.detallesPedidosService.remove(+codigo);
   }
 }

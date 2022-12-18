@@ -1,6 +1,6 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CategoriasService } from '../categorias/categorias.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
@@ -8,7 +8,10 @@ import { Producto } from './entities/producto.entity';
 
 @Injectable()
 export class ProductosService {
+
   constructor(
+    private readonly dataSource: DataSource,
+    
     @InjectRepository(Producto)
     private readonly productoRepository: Repository<Producto>,
     private readonly categoriaService: CategoriasService,
@@ -38,11 +41,41 @@ export class ProductosService {
     });
   }
 
-  update(id: number, updateProductoDto: UpdateProductoDto) {
-    return `This action updates a #${id} producto`;
+  async update(codigo: string, updateProductoDto: UpdateProductoDto) {
+    const { ...rest } = updateProductoDto;
+    const producto = await this.productoRepository.preload({
+      codigo,
+      ...rest
+    });
+
+    if(!producto) throw new NotFoundException(`Producto con codigo ${codigo} no encontrado`);
+
+    //crear Query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(producto);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+      return this.findOne(codigo);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error)
+    }
   }
 
   remove(id: number) {
     return `This action removes a #${id} producto`;
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505'){
+      throw new BadRequestException(error.detail);
+    }
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

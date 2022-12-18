@@ -1,6 +1,6 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { Usuario } from './entities/usuario.entity';
@@ -10,9 +10,9 @@ import { ClientesService } from '../clientes/clientes.service';
 @Injectable()
 export class AuthService {
 
-  
-
   constructor(
+    private readonly dataSource: DataSource,
+    
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
     private readonly clienteService: ClientesService
@@ -53,8 +53,34 @@ export class AuthService {
     });
   }
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
+  async update(codigo: string, updateAuthDto: UpdateAuthDto) {
+    const { ...rest } = updateAuthDto;
+    const usuario = await this.usuarioRepository.preload({
+      codigo,
+      ...rest
+    });
+
+    if(!usuario) throw new NotFoundException(`Usuario con código ${codigo} no encontrado`);
+
+    //crear Query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      //guardamos la info del usuario pero NO SE GUARDA EN LA BD
+      await queryRunner.manager.save(usuario);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+
+      // return (usuario)
+      return this.findOne(codigo);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error)
+    }
   }
 
   remove(id: number) {

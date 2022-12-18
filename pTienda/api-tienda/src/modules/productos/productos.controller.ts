@@ -22,13 +22,13 @@ export class ProductosController {
     return this.productosService.findOne(codigo);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductoDto: UpdateProductoDto) {
-    return this.productosService.update(+id, updateProductoDto);
+  @Patch(':codigo')
+  update(@Param('codigo') codigo: string, @Body() updateProductoDto: UpdateProductoDto) {
+    return this.productosService.update(codigo, updateProductoDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productosService.remove(+id);
+  @Delete(':codigo')
+  remove(@Param('codigo') codigo: string) {
+    return this.productosService.remove(+codigo);
   }
 }

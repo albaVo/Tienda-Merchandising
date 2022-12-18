@@ -1,6 +1,6 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { ClientesService } from '../clientes/clientes.service';
 import { DetallesPedidosService } from '../detalles_pedidos/detalles_pedidos.service';
 import { CreatePedidoDto } from './dto/create-pedido.dto';
@@ -11,6 +11,8 @@ import { Pedido } from './entities/pedido.entity';
 export class PedidosService {
 
   constructor(
+    private readonly dataSource: DataSource,
+    
     @InjectRepository(Pedido)
     private readonly pedidoRepository: Repository<Pedido>,
     private readonly clienteService: ClientesService,
@@ -47,11 +49,41 @@ export class PedidosService {
     })
   }
 
-  update(id: number, updatePedidoDto: UpdatePedidoDto) {
-    return `This action updates a #${id} pedido`;
+  async update(codigo: string, updatePedidoDto: UpdatePedidoDto) {
+    const { ...rest } = updatePedidoDto;
+    const pedido = await this.pedidoRepository.preload({
+      codigo,
+      ...rest
+    });
+
+    if(!pedido) throw new NotFoundException(`Pedido con codigo ${codigo} no encontrado`);
+
+    //crear Query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(pedido);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+      return this.findOne(codigo);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error)
+    }
   }
 
   remove(id: number) {
     return `This action removes a #${id} pedido`;
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505'){
+      throw new BadRequestException(error.detail);
+    }
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

@@ -27,13 +27,13 @@ export class AuthController {
     return this.authService.findOne(codigo);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(+id, updateAuthDto);
+  @Patch(':codigo')
+  update(@Param('codigo') codigo: string, @Body() updateAuthDto: UpdateAuthDto) {
+    return this.authService.update(codigo, updateAuthDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+  @Delete(':codigo')
+  remove(@Param('codigo') codigo: string) {
+    return this.authService.remove(+codigo);
   }
 }

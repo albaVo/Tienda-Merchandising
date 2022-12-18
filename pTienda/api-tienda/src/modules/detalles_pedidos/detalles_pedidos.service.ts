@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { InternalServerErrorException } from '@nestjs/common/exceptions';
+import { BadRequestException, InternalServerErrorException, NotFoundException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { ProductosService } from '../productos/productos.service';
 import { CreateDetallesPedidoDto } from './dto/create-detalles_pedido.dto';
 import { UpdateDetallesPedidoDto } from './dto/update-detalles_pedido.dto';
@@ -9,7 +9,10 @@ import { DetallesPedido } from './entities/detalles_pedido.entity';
 
 @Injectable()
 export class DetallesPedidosService {
+ 
   constructor(
+    private readonly dataSource: DataSource,
+
     @InjectRepository(DetallesPedido)
     private readonly detalles_pedidoRepository: Repository<DetallesPedido>,
     private readonly productoService: ProductosService,
@@ -51,11 +54,41 @@ export class DetallesPedidosService {
     });
   }
 
-  update(id: number, updateDetallesPedidoDto: UpdateDetallesPedidoDto) {
-    return `This action updates a #${id} detallesPedido`;
+  async update(codigo: string, updateDetallesPedidoDto: UpdateDetallesPedidoDto) {
+    const { ...rest } = updateDetallesPedidoDto;
+    const detalles_pedido = await this.detalles_pedidoRepository.preload({
+      codigo,
+      ...rest
+    });
+
+    if(!detalles_pedido) throw new NotFoundException(`Detalle_Pedido con codigo ${codigo} no encontrado`);
+
+    //crear Query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(detalles_pedido);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+      return this.findOne(codigo);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error)
+    }
   }
 
   remove(id: number) {
     return `This action removes a #${id} detallesPedido`;
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505'){
+      throw new BadRequestException(error.detail);
+    }
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

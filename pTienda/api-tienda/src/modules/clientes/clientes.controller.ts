@@ -22,13 +22,13 @@ export class ClientesController {
     return this.clientesService.findOne(NIF);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClienteDto: UpdateClienteDto) {
-    return this.clientesService.update(+id, updateClienteDto);
+  @Patch(':NIF')
+  update(@Param('NIF') NIF: string, @Body() updateClienteDto: UpdateClienteDto) {
+    return this.clientesService.update(NIF, updateClienteDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientesService.remove(+id);
+  @Delete(':NIF')
+  remove(@Param('NIF') NIF: string) {
+    return this.clientesService.remove(+NIF);
   }
 }

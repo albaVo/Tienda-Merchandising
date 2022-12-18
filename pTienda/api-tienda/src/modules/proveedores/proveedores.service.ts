@@ -1,6 +1,6 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateProveedoreDto } from './dto/create-proveedore.dto';
 import { UpdateProveedoreDto } from './dto/update-proveedore.dto';
 import { Proveedore } from './entities/proveedore.entity';
@@ -11,6 +11,8 @@ export class ProveedoresService {
   private readonly logger = new Logger('ProveedoresService');
 
   constructor(
+    private readonly dataSource: DataSource,
+    
     @InjectRepository(Proveedore)
     private readonly proveedorRepository: Repository<Proveedore>
   ){}
@@ -37,8 +39,31 @@ export class ProveedoresService {
     })
   }
 
-  update(id: number, updateProveedoreDto: UpdateProveedoreDto) {
-    return `This action updates a #${id} proveedore`;
+  async update(codigo: string, updateProveedoreDto: UpdateProveedoreDto) {
+    const { ...rest } = updateProveedoreDto;
+    const proveedor = await this.proveedorRepository.preload({
+      codigo,
+      ...rest
+    });
+
+    if(!proveedor) throw new NotFoundException(`Proveedor con codigo ${codigo} no encontrado`);
+
+    //crear Query runner
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.save(proveedor);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+      return this.findOne(codigo);
+    }
+    catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      this.handleDBErrors(error)
+    }
   }
 
   remove(id: number) {

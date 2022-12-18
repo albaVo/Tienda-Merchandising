@@ -22,13 +22,13 @@ export class ProveedoresController {
     return this.proveedoresService.findOne(codigo);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProveedoreDto: UpdateProveedoreDto) {
-    return this.proveedoresService.update(+id, updateProveedoreDto);
+  @Patch(':codigo')
+  update(@Param('codigo') codigo: string, @Body() updateProveedoreDto: UpdateProveedoreDto) {
+    return this.proveedoresService.update(codigo, updateProveedoreDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.proveedoresService.remove(+id);
+  @Delete(':codigo')
+  remove(@Param('codigo') codigo: string) {
+    return this.proveedoresService.remove(+codigo);
   }
 }
