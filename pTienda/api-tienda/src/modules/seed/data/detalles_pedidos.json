@@ -1,0 +1,33 @@
+[
+    {
+        "codigo": "01",
+        "cantidad": 1,
+        "precio_total": 15,
+        "codigoProducto": "44533583"
+    },
+    {
+        "codigo": "02",
+        "cantidad": 2,
+        "precio_total": 110,
+        "codigoProducto": "64598712"
+    },
+    {
+        "codigo": "03",
+        "cantidad": 3,
+        "precio_total": 75,
+        "codigoProducto": "87452036"
+    },
+    {
+        "codigo": "04",
+        "cantidad": 1,
+        "precio_total": 30,
+        "codigoProducto": "81023459"
+    },
+    {
+        "codigo": "05",
+        "cantidad": 5,
+        "precio_total": 190,
+        "codigoProducto": "02365789"
+    }
+    
+]

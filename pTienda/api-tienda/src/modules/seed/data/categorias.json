@@ -1,0 +1,27 @@
+[
+    {
+        "codigo": "c1",
+        "nombre": "Marvel",
+        "codigoProveedor": "001"  
+    },
+    {
+        "codigo": "c2",
+        "nombre": "Harry Potter",
+        "codigoProveedor": "002" 
+    },
+    {
+        "codigo": "c3",
+        "nombre": "Dragon Ball",
+        "codigoProveedor": "003"   
+    },
+    {
+        "codigo": "c4",
+        "nombre": "Netflix",
+        "codigoProveedor": "004"   
+    },
+    {
+        "codigo": "c5",
+        "nombre": "Disney",
+        "codigoProveedor": "005" 
+    }
+]

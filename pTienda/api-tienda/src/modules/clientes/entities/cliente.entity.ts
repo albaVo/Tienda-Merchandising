@@ -1,5 +1,5 @@
 import { Pedido } from 'src/modules/pedidos/entities/pedido.entity';
-import { Usuario } from 'src/modules/usuarios/entities/usuario.entity';
+import { Usuario } from 'src/modules/auth/entities/usuario.entity';
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity()
@@ -25,8 +25,8 @@ export class Cliente {
   @OneToOne(
     () => Usuario,
     (usuario) => usuario.cliente,
+    { cascade: false }
   )
-  @JoinColumn()
   usuario?: Usuario;
 
   @OneToMany(

@@ -12,4 +12,7 @@ export class CreateDetallesPedidoDto {
     @IsNumber()
     @IsPositive()
     precio_total: number;
+
+    @IsString()
+    codigoProducto: string;
 }

@@ -1,46 +1,38 @@
+import { BadRequestException } from '@nestjs/common';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UsuariosService } from '../usuarios/usuarios.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
-
   constructor(
     @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>,
-    private readonly usuarioService: UsuariosService
   ) {}
 
   async create(createClienteDto: CreateClienteDto) {
     try {
-      const { codigoUsuario, ...camposCliente } = createClienteDto;
-      const cliente = this.clienteRepository.create({...camposCliente});
-      const usuario = await this.usuarioService.findOne(codigoUsuario);
-      cliente.usuario = usuario[0];
+      const cliente = this.clienteRepository.create(createClienteDto);
       await this.clienteRepository.save(cliente);
-      return cliente
-    }
-    catch (error) {
+      return cliente;
+    } catch (error) {
       console.log(error);
       throw new InternalServerErrorException('Ayuda!');
     }
   }
 
   findAll() {
-    return this.clienteRepository.find({
-      relations: ['usuario']
-    });
+    return this.clienteRepository.find({});
   }
 
   findOne(NIF: string) {
     return this.clienteRepository.find({
-      where: {NIF},
-      relations: {pedidos: true}
-    })
+      where: { NIF },
+
+    });
   }
 
   update(id: number, updateClienteDto: UpdateClienteDto) {
@@ -49,5 +41,24 @@ export class ClientesService {
 
   remove(id: number) {
     return `This action removes a #${id} cliente`;
+  }
+
+  async deleteAllClientes() {
+    const query = this.clienteRepository.createQueryBuilder('cliente');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    } catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
+
+  private handleDBErrors(error: any): never {
+    if (error.code === '23505') 
+      throw new BadRequestException(error.detail);
+
+    throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

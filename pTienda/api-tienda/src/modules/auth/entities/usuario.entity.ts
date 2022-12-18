@@ -1,5 +1,5 @@
-import { Cliente } from 'src/modules/clientes/entities/cliente.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Cliente } from "src/modules/clientes/entities/cliente.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -21,10 +21,19 @@ export class Usuario {
   @Column('text', { nullable: true })
   website: string;
 
+  @Column('bool', {default: true})
+  isActive: boolean;
+
+  @Column('text', {
+    array: true,
+    default: ['usuario']
+  })
+  roles: string[];
+
   @OneToOne(
     () => Cliente,
     (cliente) => cliente.usuario,
-    { cascade: false }
   )
+  @JoinColumn()
   cliente?: Cliente;
 }

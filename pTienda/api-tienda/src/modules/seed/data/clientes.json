@@ -1,0 +1,82 @@
+[
+    {
+        "NIF": "58629324R",
+        "nombre": "Beatriz",
+        "apellidos": "Marquez Mendoza",
+        "telefono": "696151068",
+        "direccion": "Camino Ancho 59",
+        "ciudad": "Salamanca"
+    },
+    {
+        "NIF": "04062865F",
+        "nombre": "Rosa",
+        "apellidos": "Ortiz Gallegos",
+        "telefono": "623962599",
+        "direccion": "Carretera del Muelle 56",
+        "ciudad": "Catellón"
+    },
+    {
+        "NIF": "06825646M",
+        "nombre": "Rodrigo",
+        "apellidos": "Puente Carrillo",
+        "telefono": "674895320",
+        "direccion": "Plaza Colón 56",
+        "ciudad": "LLeida"
+    },
+    {
+        "NIF": "15714830B",
+        "nombre": "Manuel",
+        "apellidos": "Fernandez Gómez",
+        "telefono": "640927319",
+        "direccion": "Cañada del Rosal 26",
+        "ciudad": "Huelva"
+    },
+    {
+        "NIF": "41862622T",
+        "nombre": "Vanesa",
+        "apellidos": "Ibarra Ruiz",
+        "telefono": "627784032",
+        "direccion": "Cuesta del Álamo 32",
+        "ciudad": "Málaga"
+    },
+    {
+        "NIF": "12687459Y",
+        "nombre": "Judit",
+        "apellidos": "Suarez Romero",
+        "telefono": "692449912",
+        "direccion": "Plaza de España 6",
+        "ciudad": "A Coruña"
+    },
+    {
+        "NIF": "15478963P",
+        "nombre": "Hector",
+        "apellidos": "Hernandez Mellado",
+        "telefono": "647699836",
+        "direccion": "Caño 42",
+        "ciudad": "Ourense"
+    },
+    {
+        "NIF": "14587923L",
+        "nombre": "Teresa",
+        "apellidos": "Alcaraz Millan",
+        "telefono": "633459343",
+        "direccion": "Paseo Junquera 17",
+        "ciudad": "Catellón"
+    },
+    {
+        "NIF": "47859963R",
+        "nombre": "Sebastian",
+        "apellidos": "Espinoza Mena",
+        "telefono": "682743824",
+        "direccion": "Paseo del Atlántico 51",
+        "ciudad": "Granada"
+    },
+    {
+        "NIF": "41230658M",
+        "nombre": "Jacinto",
+        "apellidos": "Valle Blanco",
+        "telefono": "670261113", 
+        "direccion": "Libertad 12",
+        "ciudad": "Avila"
+    }
+]

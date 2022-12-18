@@ -1,0 +1,228 @@
+[
+    {
+       "codigo": "44533583",
+       "nombre": "Figura Vinilo Venom",
+       "thumbnail": "https://acortar.link/nmunde",
+       "tipo": "Figura",
+       "tallas": ["M"],
+       "precio": "15",
+       "estado": "DISPONIBLE",
+       "stock": 10,
+       "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "76654746",
+        "nombre": "Pijama Deadpool",
+        "thumbnail": "https://acortar.link/3lnjii",
+        "tipo": "Pijama",
+        "tallas": ["XS","S","M","L","XL"],
+        "precio": "28",
+        "estado": "DISPONIBLE",
+        "stock": 12,
+        "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "27634247",
+        "nombre": "Thor's Hammer",
+        "thumbnail": "https://acortar.link/Pvqvjs",
+        "tipo": "Joyeria",
+        "tallas": ["M"],
+        "precio": "43",
+        "estado": "DISPONIBLE",
+        "stock": 5,
+        "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "69553976",
+        "nombre": "Calendario pared 2023",
+        "thumbnail": "https://acortar.link/MLqmVu",
+        "tipo": "Calendario",
+        "tallas": ["M"],
+        "precio": "10",
+        "estado": "DISPONIBLE",
+        "stock": 20,
+        "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "27987786",
+        "nombre": "Playing Cards",
+        "thumbnail": "https://acortar.link/E2Aw7Y",
+        "tipo": "Baraja de Cartas",
+        "tallas": ["M"],
+        "precio": "6",
+        "estado": "DISPONIBLE",
+        "stock": 14,
+        "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "99396285",
+        "nombre": "Spider-Man Sporttaschee",
+        "thumbnail": "https://acortar.link/GuBx56",
+        "tipo": "Bolsas de Deporte",
+        "tallas": ["M"],
+        "precio": "36",
+        "estado": "NO DISPONIBLE",
+        "stock": 0,
+        "codigoCategoria": "c1"
+    },
+    {
+        "codigo": "54499795",
+        "nombre": "Harry Potter Funko Christmas",
+        "thumbnail": "https://acortar.link/HAtGz1",
+        "tipo": "Figura",
+        "tallas": ["M"],
+        "precio": "60",
+        "estado": "DISPONIBLE",
+        "stock": 10,
+        "codigoCategoria": "c2"
+    },
+    {
+        "codigo": "48839749",
+        "nombre": "Gryffindor Bata",
+        "thumbnail": "https://acortar.link/vNwTPG",
+        "tipo": "Bata",
+        "tallas": ["XS","S","M","L","XL"],
+        "precio": "56",
+        "estado": "DISPONIBLE",
+        "stock": 25,
+        "codigoCategoria": "c2"
+    },
+    {
+        "codigo": "43836959",
+        "nombre": "Snitch Dorada",
+        "thumbnail": "https://acortar.link/TZxcFd",
+        "tipo": "Joyeria",
+        "tallas": ["M"],
+        "precio": "36",
+        "estado": "DISPONIBLE",
+        "stock": 7,
+        "codigoCategoria": "c2"
+    },
+    {
+        "codigo": "02365789",
+        "nombre": "Mapa del Merodeador",
+        "thumbnail": "https://acortar.link/HmaHjG",
+        "tipo": "Ropa de Cama",
+        "tallas": ["M"],
+        "precio": "38",
+        "estado": "DISPONIBLE",
+        "stock": 10,
+        "codigoCategoria": "c2"
+    },
+    {
+        "codigo": "74103598",
+        "nombre": "Deluxe A3 2023 Calendario pared",
+        "thumbnail": "https://acortar.link/4XdMLd",
+        "tipo": "Figura",
+        "tallas": ["M"],
+        "precio": "12",
+        "estado": "DISPONIBLE",
+        "stock": 30,
+        "codigoCategoria": "c2"
+    },
+    {
+        "codigo": "81023459",
+        "nombre": "Kids - Z - Group",
+        "thumbnail": "https://acortar.link/EJA7c9",
+        "tipo": "Sudaderas",
+        "tallas": ["XS","S","M","L","XL"],
+        "precio": "30",
+        "estado": "DISPONIBLE",
+        "stock": 22,
+        "codigoCategoria": "c3"
+    },
+    {
+        "codigo": "78120364",
+        "nombre": "Figura vinilo Z - Vegito 949",
+        "thumbnail": "https://acortar.link/ICJtXu",
+        "tipo": "Figura",
+        "tallas": ["M"],
+        "precio": "16",
+        "estado": "DISPONIBLE",
+        "stock": 12,
+        "codigoCategoria": "c3"
+    },
+    {
+        "codigo": "12365879",
+        "nombre": "Taza con mosquetón",
+        "thumbnail": "https://acortar.link/FxImU0",
+        "tipo": "Tazas",
+        "tallas": ["M"],
+        "precio": "19",
+        "estado": "DISPONIBLE",
+        "stock": 20,
+        "codigoCategoria": "c3"
+    },
+    {
+        "codigo": "24597830",
+        "nombre": "Hellfire Club - Stranger Things",
+        "thumbnail": "https://acortar.link/wvuKCo",
+        "tipo": "Camisetas",
+        "tallas": ["XS","S","M","L","XL"],
+        "precio": "16",
+        "estado": "DISPONIBLE",
+        "stock": 20,
+        "codigoCategoria": "c4"
+    },
+    {
+        "codigo": "87452036",
+        "nombre": "Mochila Hellfire Club - Stranger Things",
+        "thumbnail": "https://acortar.link/QpZs9B",
+        "tipo": "Mochilas",
+        "tallas": ["M"],
+        "precio": "25",
+        "estado": "DISPONIBLE",
+        "stock": 16,
+        "codigoCategoria": "c4"
+    },
+    {
+        "codigo": "64598712",
+        "nombre": "Anti Possesion - Supernatural",
+        "thumbnail": "https://acortar.link/EFGYgJ",
+        "tipo": "Joyeria",
+        "tallas": ["M"],
+        "precio": "55",
+        "estado": "DISPONIBLE",
+        "stock": 9,
+        "codigoCategoria": "c4"
+    },
+    {
+        "codigo": "75130200",
+        "nombre": "Happy Holidays - Mickey & Minnie",
+        "thumbnail": "https://acortar.link/vLNGij",
+        "tipo": "Jersey",
+        "tallas": ["XS","S","M","L","XL"],
+        "precio": "16",
+        "estado": "DISPONIBLE",
+        "stock": 19,
+        "codigoCategoria": "c5"
+    },
+    {
+        "codigo": "01236875",
+        "nombre": "Figura vinilo Alice with Flowers - Alice in Wonderland",
+        "thumbnail": "https://acortar.link/NaklRs",
+        "tipo": "Figura",
+        "tallas": ["M"],
+        "precio": "59",
+        "estado": "DISPONIBLE",
+        "stock": 6,
+        "codigoCategoria": "c5"
+    },
+    {
+        "codigo": "96301254",
+        "nombre": "Swimming Mermaid - The Little Mermaid",
+        "thumbnail": "https://acortar.link/Q6P80z",
+        "tipo": "Joyeria",
+        "tallas": ["M"],
+        "precio": "46",
+        "estado": "DISPONIBLE",
+        "stock": 20,
+        "codigoCategoria": "c5"
+    }
+
+    
+
+    
+
+    
+]

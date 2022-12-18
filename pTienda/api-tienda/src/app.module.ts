@@ -4,10 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientesModule } from './modules/clientes/clientes.module';
 import { ProductosModule } from './modules/productos/productos.module';
 import { PedidosModule } from './modules/pedidos/pedidos.module';
-import { UsuariosModule } from './modules/usuarios/usuarios.module';
 import { DetallesPedidosModule } from './modules/detalles_pedidos/detalles_pedidos.module';
 import { CategoriasModule } from './modules/categorias/categorias.module';
 import { ProveedoresModule } from './modules/proveedores/proveedores.module';
+import { SeedModule } from './modules/seed/seed.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -25,10 +26,11 @@ import { ProveedoresModule } from './modules/proveedores/proveedores.module';
     ClientesModule,
     ProductosModule,
     PedidosModule,
-    UsuariosModule,
     DetallesPedidosModule,
     CategoriasModule,
     ProveedoresModule,
+    SeedModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

@@ -19,8 +19,7 @@ export class PedidosService {
 
   async create(createPedidoDto: CreatePedidoDto) {
     try {
-      const { codigoDetallesPedido, 
-        NIFCliente, ...camposPedido } = createPedidoDto;
+      const { codigoDetallesPedido, NIFCliente, ...camposPedido } = createPedidoDto;
       const pedido = this.pedidoRepository.create({...camposPedido});
       const cliente = await this.clienteService.findOne(NIFCliente);
       const detalles_pedido = await this.detalles_pedidoService.findOne(codigoDetallesPedido);

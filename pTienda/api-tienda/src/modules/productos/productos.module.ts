@@ -10,6 +10,8 @@ import { CategoriasModule } from '../categorias/categorias.module';
   providers: [ProductosService],
   imports: [
     CategoriasModule,
-    TypeOrmModule.forFeature([Producto])]
+    TypeOrmModule.forFeature([Producto])
+  ],
+  exports: [ProductosService]
 })
 export class ProductosModule {}

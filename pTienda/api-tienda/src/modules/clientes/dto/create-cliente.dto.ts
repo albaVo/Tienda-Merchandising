@@ -24,8 +24,4 @@ export class CreateClienteDto {
   @IsString()
   @MinLength(1)
   ciudad: string;
-
-  @IsString()
-  @MinLength(1)
-  codigoUsuario: string;
 }

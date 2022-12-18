@@ -8,36 +8,34 @@ import { Producto } from './entities/producto.entity';
 
 @Injectable()
 export class ProductosService {
-
   constructor(
     @InjectRepository(Producto)
     private readonly productoRepository: Repository<Producto>,
-    private readonly categoriaService: CategoriasService
-  ){}
+    private readonly categoriaService: CategoriasService,
+  ) {}
 
   async create(createProductoDto: CreateProductoDto) {
     try {
       const { codigoCategoria, ...camposProducto } = createProductoDto;
-      const producto = this.productoRepository.create({...camposProducto});
+      const producto = this.productoRepository.create({ ...camposProducto });
       const categoria = await this.categoriaService.findOne(codigoCategoria);
       producto.categoria = categoria;
       await this.productoRepository.save(producto);
-      return producto
-    }
-    catch(error){
+      return producto;
+    } catch (error) {
       console.log(error);
-      return new InternalServerErrorException('Ayuda!')
+      return new InternalServerErrorException('Ayuda!');
     }
   }
 
   findAll() {
-    return this.productoRepository.find({})
+    return this.productoRepository.find({});
   }
 
   findOne(codigo: string) {
     return this.productoRepository.findOne({
-      where: {codigo}
-    })
+      where: { codigo },
+    });
   }
 
   update(id: number, updateProductoDto: UpdateProductoDto) {
