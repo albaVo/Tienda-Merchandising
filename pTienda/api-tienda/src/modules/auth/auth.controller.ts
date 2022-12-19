@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
+import { LoginUsuarioDto } from './dto/login-usuario.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Controller('auth')
@@ -12,10 +13,10 @@ export class AuthController {
     return this.authService.create(createUsuarioDto);
   }
 
-  // @Post('login')
-  // login(@Body() loginUsuarioDto: LoginUsuarioDto) {
-  //   return this.authService.create(loginUsuarioDto);
-  // }
+  @Post('login')
+  login(@Body() loginUsuarioDto: LoginUsuarioDto) {
+    return this.authService.login(loginUsuarioDto);
+  }
 
   @Get()
   findAll() {

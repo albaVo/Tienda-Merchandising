@@ -1,8 +1,9 @@
-import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { LoginUsuarioDto } from './dto/login-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import * as bcrypt from 'bcrypt';
 import { ClientesService } from '../clientes/clientes.service';
@@ -37,9 +38,28 @@ export class AuthService {
     }
   }
 
-  // async login (loginUsuarioDto: LoginUsuarioDto) {
+  async login (loginUsuarioDto: LoginUsuarioDto) {
+    try {
+      // buscamos el usuario del email
+      const { email, contraseña } = loginUsuarioDto;
+      const usuario = await this.usuarioRepository.findOne({
+        where: {email},
+        select: {email: true, contraseña: true}
+      });
 
-  // }
+      if (!usuario)
+        throw new UnauthorizedException ('Credenciales no válidas (email)');
+      
+      // comparamos las contraseñas
+      if (!bcrypt.compareSync(contraseña, usuario.contraseña))
+        throw new UnauthorizedException ('Credenciales no válidas (email)');
+
+      return usuario;
+    }
+    catch (error) {
+      this.handleDBErrors (error)
+    }
+  }
 
   findAll() {
     return this.usuarioRepository.find({
