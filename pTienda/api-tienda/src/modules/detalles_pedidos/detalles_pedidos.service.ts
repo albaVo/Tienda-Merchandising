@@ -81,8 +81,9 @@ export class DetallesPedidosService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} detallesPedido`;
+  async remove(codigo: string) {
+    const detalles_pedido = await this.findOne(codigo);
+    await this.detalles_pedidoRepository.remove(detalles_pedido)
   }
 
   private handleDBErrors(error: any): never {

@@ -38,14 +38,17 @@ export class Producto {
   })
   stock: number;
 
-  @ManyToOne(() => Categoria, (categoria) => categoria.productos, {
-    cascade: false,
-  })
+  @ManyToOne(
+    () => Categoria, 
+    (categoria) => categoria.productos, 
+    {onDelete: 'CASCADE'}
+  )
   categoria?: Categoria;
 
   @ManyToMany(
     () => DetallesPedido,
     (detalles_pedido) => detalles_pedido.productos,
+    {onDelete: 'CASCADE'}
   )
   @JoinTable({
     name: 'detalles_pedidos_productos',

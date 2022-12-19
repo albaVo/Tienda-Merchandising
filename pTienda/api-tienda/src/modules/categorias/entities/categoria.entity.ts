@@ -17,12 +17,17 @@ export class Categoria {
   @Column('text', { unique: true })
   nombre: string;
 
-  @OneToOne(() => Proveedore, (proveedore) => proveedore.categoria)
+  @OneToOne(
+    () => Proveedore, 
+    (proveedore) => proveedore.categoria,
+    {onDelete: 'CASCADE'}
+  )
   @JoinColumn()
   proveedore?: Proveedore;
 
-  @OneToMany(() => Producto, (Producto) => Producto.categoria, {
-    cascade: false,
+  @OneToMany(() => Producto, (Producto) => Producto.categoria, 
+  {
+    onDelete: 'CASCADE',
     eager: true,
   })
   productos?: Producto[];

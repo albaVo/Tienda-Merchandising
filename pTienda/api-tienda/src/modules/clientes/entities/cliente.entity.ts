@@ -25,14 +25,14 @@ export class Cliente {
   @OneToOne(
     () => Usuario,
     (usuario) => usuario.cliente,
-    { cascade: false }
+    { onDelete: 'CASCADE' }
   )
   usuario?: Usuario;
 
   @OneToMany(
     () => Pedido,
     (pedido) => pedido.cliente,
-    { cascade: false, eager: true }
+    { onDelete: 'CASCADE', eager: true }
   )
   pedidos?: Pedido[];
 }

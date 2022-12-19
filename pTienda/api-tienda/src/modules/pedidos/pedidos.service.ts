@@ -76,8 +76,9 @@ export class PedidosService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pedido`;
+  async remove(codigo: string) {
+    const pedido = await this.findOne(codigo);
+    await this.pedidoRepository.remove(pedido)
   }
 
   private handleDBErrors(error: any): never {

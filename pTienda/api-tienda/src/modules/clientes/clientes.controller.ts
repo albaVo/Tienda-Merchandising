@@ -29,6 +29,6 @@ export class ClientesController {
 
   @Delete(':NIF')
   remove(@Param('NIF') NIF: string) {
-    return this.clientesService.remove(+NIF);
+    return this.clientesService.remove(NIF);
   }
 }

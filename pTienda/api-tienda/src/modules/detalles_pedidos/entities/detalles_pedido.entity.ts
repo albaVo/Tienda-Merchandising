@@ -13,11 +13,17 @@ export class DetallesPedido {
   @Column('numeric')
   precio_total: number;
 
-  @OneToOne(() => Pedido, (pedido) => pedido.detalles_pedido, {
-    cascade: false,
-  })
+  @OneToOne(
+    () => Pedido, 
+    (pedido) => pedido.detalles_pedido, 
+    {onDelete: 'CASCADE'}
+  )
   pedido?: Pedido;
 
-  @ManyToMany(() => Producto, (producto) => producto.detalles_pedidos)
+  @ManyToMany(
+    () => Producto, 
+    (producto) => producto.detalles_pedidos,
+    {onDelete: 'CASCADE'}
+  )
   productos: Producto[];
 }

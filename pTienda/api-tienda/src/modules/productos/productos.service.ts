@@ -68,8 +68,9 @@ export class ProductosService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} producto`;
+  async remove(codigo: string) {
+    const producto = await this.findOne(codigo);
+    await this.productoRepository.remove(producto)
   }
 
   private handleDBErrors(error: any): never {

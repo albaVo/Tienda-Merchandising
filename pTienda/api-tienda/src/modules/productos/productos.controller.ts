@@ -29,6 +29,6 @@ export class ProductosController {
 
   @Delete(':codigo')
   remove(@Param('codigo') codigo: string) {
-    return this.productosService.remove(+codigo);
+    return this.productosService.remove(codigo);
   }
 }

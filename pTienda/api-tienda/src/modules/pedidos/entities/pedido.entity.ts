@@ -13,13 +13,14 @@ export class Pedido {
     @ManyToOne(
         () => Cliente,
         (cliente) => cliente.pedidos,
-        { cascade: false }
+        { onDelete: 'CASCADE' }
     )
     cliente?: Cliente;
 
     @OneToOne(
         () => DetallesPedido,
-        (detalles_pedido) => detalles_pedido.pedido
+        (detalles_pedido) => detalles_pedido.pedido,
+        {onDelete: 'CASCADE'}
     )
     @JoinColumn()
     detalles_pedido: DetallesPedido;

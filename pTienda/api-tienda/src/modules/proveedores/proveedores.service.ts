@@ -66,8 +66,9 @@ export class ProveedoresService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} proveedore`;
+  async remove(codigo: string) {
+    const proveedor = await this.findOne(codigo);
+    await this.proveedorRepository.remove(proveedor)
   }
 
   async deleteAllProveedores() {

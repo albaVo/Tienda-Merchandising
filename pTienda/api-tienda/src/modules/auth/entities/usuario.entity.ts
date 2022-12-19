@@ -33,6 +33,7 @@ export class Usuario {
   @OneToOne(
     () => Cliente,
     (cliente) => cliente.usuario,
+    {onDelete: 'CASCADE'}
   )
   @JoinColumn()
   cliente?: Cliente;

@@ -29,6 +29,6 @@ export class ProveedoresController {
 
   @Delete(':codigo')
   remove(@Param('codigo') codigo: string) {
-    return this.proveedoresService.remove(+codigo);
+    return this.proveedoresService.remove(codigo);
   }
 }

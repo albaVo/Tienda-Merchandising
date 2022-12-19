@@ -83,8 +83,9 @@ export class AuthService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+  async remove(codigo: string) {
+    const usuario = await this.findOne(codigo);
+    await this.usuarioRepository.remove(usuario)
   }
 
   // async deleteAllUsuarios() {

@@ -42,6 +42,6 @@ export class DetallesPedidosController {
 
   @Delete(':codigo')
   remove(@Param('codigo') codigo: string) {
-    return this.detallesPedidosService.remove(+codigo);
+    return this.detallesPedidosService.remove(codigo);
   }
 }

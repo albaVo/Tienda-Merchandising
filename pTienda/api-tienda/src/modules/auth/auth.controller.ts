@@ -34,6 +34,6 @@ export class AuthController {
 
   @Delete(':codigo')
   remove(@Param('codigo') codigo: string) {
-    return this.authService.remove(+codigo);
+    return this.authService.remove(codigo);
   }
 }

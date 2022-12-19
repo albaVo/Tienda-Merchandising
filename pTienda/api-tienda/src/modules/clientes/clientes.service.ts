@@ -68,8 +68,9 @@ export class ClientesService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cliente`;
+  async remove(NIF: string) {
+    const cliente = await this.findOne(NIF);
+    await this.clienteRepository.remove(cliente)
   }
 
   // async deleteAllClientes() {
