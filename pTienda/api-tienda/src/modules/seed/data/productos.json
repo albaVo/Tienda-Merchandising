@@ -5,7 +5,7 @@
        "thumbnail": "https://acortar.link/nmunde",
        "tipo": "Figura",
        "tallas": ["M"],
-       "precio": "15",
+       "precio": 15,
        "estado": "DISPONIBLE",
        "stock": 10,
        "codigoCategoria": "c1"
@@ -16,7 +16,7 @@
         "thumbnail": "https://acortar.link/3lnjii",
         "tipo": "Pijama",
         "tallas": ["XS","S","M","L","XL"],
-        "precio": "28",
+        "precio": 28,
         "estado": "DISPONIBLE",
         "stock": 12,
         "codigoCategoria": "c1"
@@ -27,7 +27,7 @@
         "thumbnail": "https://acortar.link/Pvqvjs",
         "tipo": "Joyeria",
         "tallas": ["M"],
-        "precio": "43",
+        "precio": 43,
         "estado": "DISPONIBLE",
         "stock": 5,
         "codigoCategoria": "c1"
@@ -38,7 +38,7 @@
         "thumbnail": "https://acortar.link/MLqmVu",
         "tipo": "Calendario",
         "tallas": ["M"],
-        "precio": "10",
+        "precio": 10,
         "estado": "DISPONIBLE",
         "stock": 20,
         "codigoCategoria": "c1"
@@ -49,7 +49,7 @@
         "thumbnail": "https://acortar.link/E2Aw7Y",
         "tipo": "Baraja de Cartas",
         "tallas": ["M"],
-        "precio": "6",
+        "precio": 6,
         "estado": "DISPONIBLE",
         "stock": 14,
         "codigoCategoria": "c1"
@@ -60,7 +60,7 @@
         "thumbnail": "https://acortar.link/GuBx56",
         "tipo": "Bolsas de Deporte",
         "tallas": ["M"],
-        "precio": "36",
+        "precio": 36,
         "estado": "NO DISPONIBLE",
         "stock": 0,
         "codigoCategoria": "c1"
@@ -71,7 +71,7 @@
         "thumbnail": "https://acortar.link/HAtGz1",
         "tipo": "Figura",
         "tallas": ["M"],
-        "precio": "60",
+        "precio": 60,
         "estado": "DISPONIBLE",
         "stock": 10,
         "codigoCategoria": "c2"
@@ -82,7 +82,7 @@
         "thumbnail": "https://acortar.link/vNwTPG",
         "tipo": "Bata",
         "tallas": ["XS","S","M","L","XL"],
-        "precio": "56",
+        "precio": 56,
         "estado": "DISPONIBLE",
         "stock": 25,
         "codigoCategoria": "c2"
@@ -93,7 +93,7 @@
         "thumbnail": "https://acortar.link/TZxcFd",
         "tipo": "Joyeria",
         "tallas": ["M"],
-        "precio": "36",
+        "precio": 36,
         "estado": "DISPONIBLE",
         "stock": 7,
         "codigoCategoria": "c2"
@@ -104,7 +104,7 @@
         "thumbnail": "https://acortar.link/HmaHjG",
         "tipo": "Ropa de Cama",
         "tallas": ["M"],
-        "precio": "38",
+        "precio": 38,
         "estado": "DISPONIBLE",
         "stock": 10,
         "codigoCategoria": "c2"
@@ -115,7 +115,7 @@
         "thumbnail": "https://acortar.link/4XdMLd",
         "tipo": "Figura",
         "tallas": ["M"],
-        "precio": "12",
+        "precio": 12,
         "estado": "DISPONIBLE",
         "stock": 30,
         "codigoCategoria": "c2"
@@ -126,7 +126,7 @@
         "thumbnail": "https://acortar.link/EJA7c9",
         "tipo": "Sudaderas",
         "tallas": ["XS","S","M","L","XL"],
-        "precio": "30",
+        "precio": 30,
         "estado": "DISPONIBLE",
         "stock": 22,
         "codigoCategoria": "c3"
@@ -137,7 +137,7 @@
         "thumbnail": "https://acortar.link/ICJtXu",
         "tipo": "Figura",
         "tallas": ["M"],
-        "precio": "16",
+        "precio": 16,
         "estado": "DISPONIBLE",
         "stock": 12,
         "codigoCategoria": "c3"
@@ -148,7 +148,7 @@
         "thumbnail": "https://acortar.link/FxImU0",
         "tipo": "Tazas",
         "tallas": ["M"],
-        "precio": "19",
+        "precio": 19,
         "estado": "DISPONIBLE",
         "stock": 20,
         "codigoCategoria": "c3"
@@ -159,7 +159,7 @@
         "thumbnail": "https://acortar.link/wvuKCo",
         "tipo": "Camisetas",
         "tallas": ["XS","S","M","L","XL"],
-        "precio": "16",
+        "precio": 16,
         "estado": "DISPONIBLE",
         "stock": 20,
         "codigoCategoria": "c4"
@@ -170,7 +170,7 @@
         "thumbnail": "https://acortar.link/QpZs9B",
         "tipo": "Mochilas",
         "tallas": ["M"],
-        "precio": "25",
+        "precio": 25,
         "estado": "DISPONIBLE",
         "stock": 16,
         "codigoCategoria": "c4"
@@ -181,7 +181,7 @@
         "thumbnail": "https://acortar.link/EFGYgJ",
         "tipo": "Joyeria",
         "tallas": ["M"],
-        "precio": "55",
+        "precio": 55,
         "estado": "DISPONIBLE",
         "stock": 9,
         "codigoCategoria": "c4"
@@ -192,7 +192,7 @@
         "thumbnail": "https://acortar.link/vLNGij",
         "tipo": "Jersey",
         "tallas": ["XS","S","M","L","XL"],
-        "precio": "16",
+        "precio": 16,
         "estado": "DISPONIBLE",
         "stock": 19,
         "codigoCategoria": "c5"
@@ -203,7 +203,7 @@
         "thumbnail": "https://acortar.link/NaklRs",
         "tipo": "Figura",
         "tallas": ["M"],
-        "precio": "59",
+        "precio": 59,
         "estado": "DISPONIBLE",
         "stock": 6,
         "codigoCategoria": "c5"
@@ -214,15 +214,9 @@
         "thumbnail": "https://acortar.link/Q6P80z",
         "tipo": "Joyeria",
         "tallas": ["M"],
-        "precio": "46",
+        "precio": 46,
         "estado": "DISPONIBLE",
         "stock": 20,
         "codigoCategoria": "c5"
-    }
-
-    
-
-    
-
-    
+    }    
 ]

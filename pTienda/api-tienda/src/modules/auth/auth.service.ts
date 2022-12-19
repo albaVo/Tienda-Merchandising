@@ -88,18 +88,18 @@ export class AuthService {
     await this.usuarioRepository.remove(usuario)
   }
 
-  // async deleteAllUsuarios() {
-  //   const query = this.usuarioRepository.createQueryBuilder('usuario');
-  //   try {
-  //     return await query
-  //     .delete()
-  //     .where({})
-  //     .execute();
-  //   } 
-  //   catch (error) {
-  //     this.handleDBErrors(error);
-  //   }
-  // }
+  async deleteAllUsuarios() {
+    const query = this.usuarioRepository.createQueryBuilder('usuario');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    } 
+    catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
 
   private handleDBErrors(error: any): never {
     if (error.code === '23505'){

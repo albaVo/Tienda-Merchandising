@@ -10,7 +10,7 @@ import { Categoria } from './entities/categoria.entity';
 @Injectable()
 export class CategoriasService {
 
-  private readonly logger = new Logger('CategoriasService');
+  // private readonly logger = new Logger('CategoriasService');
   
   
   constructor(
@@ -102,7 +102,7 @@ export class CategoriasService {
     if (error.code === '23505'){
       throw new BadRequestException(error.detail);
     }
-    this.logger.error(error);
+    // this.logger.error(error);
     throw new InternalServerErrorException('Please Check Server Error ...');
   }
 }

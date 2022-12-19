@@ -26,7 +26,7 @@ export class Producto {
   @Column('text', { array: true })
   tallas?: string[];
 
-  @Column('numeric')
+  @Column('int')
   precio: number;
 
   @Column('text')

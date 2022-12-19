@@ -7,8 +7,8 @@ export class Pedido {
     @PrimaryColumn()
     codigo: string;
 
-    @Column('date')
-    fecha_pedido: Date;
+    @Column('text')
+    fecha_pedido: string;
 
     @ManyToOne(
         () => Cliente,

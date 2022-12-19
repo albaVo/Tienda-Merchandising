@@ -1,31 +1,31 @@
 [
     {
         "codigo": "1",
-        "fecha_pedido": "2022-12-11",
+        "fecha_pedido": "11-12-2022",
         "NIFCliente": "58629324R",
         "codigoDetallesPedido": "01"
     },
     {
         "codigo": "2",
-        "fecha_pedido": "2022-5-8",
+        "fecha_pedido": "8-5-2022",
         "NIFCliente": "47859963R",
         "codigoDetallesPedido": "02"
     },
     {
         "codigo": "3",
-        "fecha_pedido": "2022-4-18",
+        "fecha_pedido": "18-4-2022",
         "NIFCliente": "04062865F",
         "codigoDetallesPedido": "03"
     },
     {
         "codigo": "4",
-        "fecha_pedido": "2022-7-12",
+        "fecha_pedido": "12-7-2022",
         "NIFCliente": "58629324R",
         "codigoDetallesPedido": "04"
     },
     {
         "codigo": "5",
-        "fecha_pedido": "2022-10-10",
+        "fecha_pedido": "10-10-2022",
         "NIFCliente": "15478963P",
         "codigoDetallesPedido": "05"
     }

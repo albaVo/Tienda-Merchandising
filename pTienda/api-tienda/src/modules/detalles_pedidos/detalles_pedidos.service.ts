@@ -21,23 +21,13 @@ export class DetallesPedidosService {
   async create(createDetallesPedidoDto: CreateDetallesPedidoDto) {
     try {
       const { codigoProducto, ...camposDetallesPedidos } = createDetallesPedidoDto;
-      const detalles_pedido = this.detalles_pedidoRepository.create({
-        ...camposDetallesPedidos,
-      });
+      const detalles_pedido = this.detalles_pedidoRepository.create({...camposDetallesPedidos});
       const producto = await this.productoService.findOne(codigoProducto);
       detalles_pedido.productos = producto[0];
       await this.detalles_pedidoRepository.save(detalles_pedido);
       return detalles_pedido;
-      // const detalles_pedido = this.detalles_pedidoRepository.create(
-      //   createDetallesPedidoDto,
-      // );
-      // detalles_pedido.codigo = createDetallesPedidoDto[0];
-      // const codigoProducto = createDetallesPedidoDto.codigoProducto;
-      // const productos = this.productoService.findOne(codigoProducto);
-      // detalles_pedido.productos = productos[0];
-      // await this.detalles_pedidoRepository.save(detalles_pedido);
-      // return detalles_pedido;
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
       throw new InternalServerErrorException('Ayuda!');
     }
@@ -86,6 +76,18 @@ export class DetallesPedidosService {
     await this.detalles_pedidoRepository.remove(detalles_pedido)
   }
 
+  async deleteAllDetalles_Pedidos() {
+    const query = this.detalles_pedidoRepository.createQueryBuilder('detalles_pedido');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    } catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
+  
   private handleDBErrors(error: any): never {
     if (error.code === '23505'){
       throw new BadRequestException(error.detail);

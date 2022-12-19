@@ -5,8 +5,8 @@ export class CreatePedidoDto {
     @MinLength(1)
     codigo: string;
 
-    @IsDateString()
-    fecha_pedido: Date;
+    @IsString()
+    fecha_pedido: string;
 
     @IsString()
     NIFCliente: string;

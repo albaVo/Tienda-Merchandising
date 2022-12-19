@@ -6,6 +6,9 @@ import { AuthModule } from '../auth/auth.module';
 import { ProveedoresService } from '../proveedores/proveedores.service';
 import { ProveedoresModule } from '../proveedores/proveedores.module';
 import { CategoriasModule } from '../categorias/categorias.module';
+import { ProductosModule } from '../productos/productos.module';
+import { DetallesPedidosModule } from '../detalles_pedidos/detalles_pedidos.module';
+import { PedidosModule } from '../pedidos/pedidos.module';
 
 @Module({
   controllers: [SeedController],
@@ -14,7 +17,10 @@ import { CategoriasModule } from '../categorias/categorias.module';
     ClientesModule,
     AuthModule,
     ProveedoresModule,
-    CategoriasModule
+    CategoriasModule,
+    ProductosModule,
+    DetallesPedidosModule,
+    PedidosModule
   ]
 })
 export class SeedModule {}

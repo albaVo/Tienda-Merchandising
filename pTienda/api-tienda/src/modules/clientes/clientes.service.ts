@@ -73,17 +73,17 @@ export class ClientesService {
     await this.clienteRepository.remove(cliente)
   }
 
-  // async deleteAllClientes() {
-  //   const query = this.clienteRepository.createQueryBuilder('cliente');
-  //   try {
-  //     return await query
-  //     .delete()
-  //     .where({})
-  //     .execute();
-  //   } catch (error) {
-  //     this.handleDBErrors(error);
-  //   }
-  // }
+  async deleteAllClientes() {
+    const query = this.clienteRepository.createQueryBuilder('cliente');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    } catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
 
   private handleDBErrors(error: any): never {
     if (error.code === '23505'){

@@ -81,6 +81,18 @@ export class PedidosService {
     await this.pedidoRepository.remove(pedido)
   }
 
+  async deleteAllPedidos() {
+    const query = this.pedidoRepository.createQueryBuilder('pedido');
+    try {
+      return await query
+      .delete()
+      .where({})
+      .execute();
+    } catch (error) {
+      this.handleDBErrors(error);
+    }
+  }
+
   private handleDBErrors(error: any): never {
     if (error.code === '23505'){
       throw new BadRequestException(error.detail);

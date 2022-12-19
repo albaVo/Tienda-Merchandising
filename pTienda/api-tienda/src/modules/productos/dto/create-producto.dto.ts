@@ -22,7 +22,7 @@ export class CreateProductoDto {
     @IsOptional()
     tallas?: string[];
 
-    @IsNumber()
+    @IsInt()
     @IsPositive()
     precio: number;
 
