@@ -50,14 +50,5 @@ export class Producto {
     (detalles_pedido) => detalles_pedido.productos,
     {onDelete: 'CASCADE'}
   )
-  @JoinTable({
-    name: 'detalles_pedidos_productos',
-    joinColumn: {
-      name: 'detalles_pedidosCodigo',
-    },
-    inverseJoinColumn: {
-      name: 'productosCodigo',
-    },
-  })
   detalles_pedidos: DetallesPedido[];
 }

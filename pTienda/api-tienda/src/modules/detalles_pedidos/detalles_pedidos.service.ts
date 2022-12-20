@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { BadRequestException, InternalServerErrorException, NotFoundException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
+import { Producto } from '../productos/entities/producto.entity';
 import { ProductosService } from '../productos/productos.service';
 import { CreateDetallesPedidoDto } from './dto/create-detalles_pedido.dto';
 import { UpdateDetallesPedidoDto } from './dto/update-detalles_pedido.dto';
@@ -15,15 +16,18 @@ export class DetallesPedidosService {
 
     @InjectRepository(DetallesPedido)
     private readonly detalles_pedidoRepository: Repository<DetallesPedido>,
-    private readonly productoService: ProductosService,
+    
+    @InjectRepository(Producto)
+    private readonly productoRepository: Repository<Producto>
   ) {}
 
   async create(createDetallesPedidoDto: CreateDetallesPedidoDto) {
     try {
       const { codigoProducto, ...camposDetallesPedidos } = createDetallesPedidoDto;
-      const detalles_pedido = this.detalles_pedidoRepository.create({...camposDetallesPedidos});
-      const producto = await this.productoService.findOne(codigoProducto);
-      detalles_pedido.productos = producto[0];
+      const detalles_pedido = this.detalles_pedidoRepository.create({
+        ...camposDetallesPedidos,
+        productos: codigoProducto.map(producto => this.productoRepository.create({codigo: producto}))
+      });
       await this.detalles_pedidoRepository.save(detalles_pedido);
       return detalles_pedido;
     } 

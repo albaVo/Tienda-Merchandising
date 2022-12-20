@@ -14,5 +14,5 @@ export class CreateDetallesPedidoDto {
     precio_total: number;
 
     @IsString()
-    codigoProducto: string;
+    codigoProducto: string[];
 }

@@ -7,6 +7,8 @@ import { LoginUsuarioDto } from './dto/login-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import * as bcrypt from 'bcrypt';
 import { ClientesService } from '../clientes/clientes.service';
+import { JwtService } from '@nestjs/jwt/dist';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +18,8 @@ export class AuthService {
     
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
-    private readonly clienteService: ClientesService
+    private readonly clienteService: ClientesService,
+    //private readonly jwtService: JwtService
   ){}
   
   async create(createUsuarioDto: CreateUsuarioDto) {
@@ -29,8 +32,11 @@ export class AuthService {
       const cliente = await this.clienteService.findOne(NIFCliente);
       usuario.cliente = cliente[0];
       await this.usuarioRepository.save(usuario);
-      //delete usuario.contraseña;
-      return usuario;
+      delete usuario.contraseña;
+      return {
+        ...usuario,
+        //token: this.getJwtToken({email: usuario.email})
+      }
     }
     catch (error) {
       console.log(error);
@@ -54,7 +60,10 @@ export class AuthService {
       if (!bcrypt.compareSync(contraseña, usuario.contraseña))
         throw new UnauthorizedException ('Credenciales no válidas (email)');
 
-      return usuario;
+      return {
+        ...usuario,
+        //token: this.getJwtToken({email: usuario.email})
+      };
     }
     catch (error) {
       this.handleDBErrors (error)
@@ -127,4 +136,9 @@ export class AuthService {
     }
     throw new InternalServerErrorException('Please Check Server Error ...');
   }
+
+  // private getJwtToken(payload: JwtPayload) {
+  //   const token = this.jwtService.sign(payload);
+  //   return token;
+  // }
 }

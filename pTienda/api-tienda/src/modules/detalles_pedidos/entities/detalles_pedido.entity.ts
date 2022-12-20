@@ -1,6 +1,6 @@
 import { Pedido } from 'src/modules/pedidos/entities/pedido.entity';
 import { Producto } from 'src/modules/productos/entities/producto.entity';
-import { Column, Entity, ManyToMany, ManyToOne, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class DetallesPedido {
@@ -25,5 +25,14 @@ export class DetallesPedido {
     (producto) => producto.detalles_pedidos,
     {onDelete: 'CASCADE'}
   )
+  @JoinTable({
+    name: 'detalles_pedidos_productos',
+    joinColumn: {
+      name: 'detalles_pedidosCodigo',
+    },
+    inverseJoinColumn: {
+      name: 'productosCodigo',
+    },
+  })
   productos: Producto[];
 }
