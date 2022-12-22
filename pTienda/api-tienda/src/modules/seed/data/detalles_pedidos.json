@@ -1,9 +1,9 @@
 [
     {
         "codigo": "01",
-        "cantidad": 1,
-        "precio_total": 15,
-        "codigoProducto": ["44533583"]
+        "cantidad": 2,
+        "precio_total": 58,
+        "codigoProducto": ["44533583","27634247"]
     },
     {
         "codigo": "02",

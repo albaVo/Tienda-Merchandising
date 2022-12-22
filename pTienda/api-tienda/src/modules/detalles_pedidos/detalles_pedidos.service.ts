@@ -3,7 +3,6 @@ import { BadRequestException, InternalServerErrorException, NotFoundException } 
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { Producto } from '../productos/entities/producto.entity';
-import { ProductosService } from '../productos/productos.service';
 import { CreateDetallesPedidoDto } from './dto/create-detalles_pedido.dto';
 import { UpdateDetallesPedidoDto } from './dto/update-detalles_pedido.dto';
 import { DetallesPedido } from './entities/detalles_pedido.entity';
