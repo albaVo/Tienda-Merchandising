@@ -1,6 +1,6 @@
 # BASE DE DATOS
 
-![tablas bd](./Tablas.png "bd" ) 
+![](./Tablas.png "bd" ) 
 
 
 # TABLAS Y RELACIONES
